@@ -1,0 +1,338 @@
+***** v0.9.2.1 (2008-06-23)
+- fixed hardcoded paths to temporary/windows folders
+
+
+***** v0.9.2 (2008-03-06)
+MxBusiness:
+* Menu
+	- Basic tab
+	- Link tab - containing text area for links
+	- Items - shows/edits child menus/commands (contained by the selected menu)
+	- Settings tab
+		- Offers picklists for setting name/value (based on the name).
+		- This one can be configured in  org.mxeclipse.model.SettingsMenu.txt file - format:
+			Line 1: Name of the setting
+			Line 2: Pipe separated available values
+			Line 3: Default value
+		  Then it repeates for the next setting
+		- Appart from the predefined range of names/values, free text for both is enabled - user can enter whatever.
+	- Expand in the tree will show all child items (menus/commands), as well as parent menus
+
+* Command
+	- Basic tab
+	- Link tab - containing text area for links
+	- Settings tab
+		- Offers picklists for setting name/value (based on the name).
+		- This one can be configured in  org.mxeclipse.model.SettingsCommand.txt file - format:
+			Line 1: Name of the setting
+			Line 2: Pipe separated available values
+			Line 3: Default value
+		  Then it repeates for the next setting
+		- Appart from the predefined range of names/values, free text for both is enabled - user can enter whatever.
+	- User Rights tab
+		- Shows all persons/roles/groups/associations having privileges on the command
+		- If empty, the command is not constrained - everyone can see it
+	- Expand in the tree will show all parent menus, but also access right related persons/roles/groups/associations
+	  defined for the command
+
+* Table
+	- Basic tab
+	- Columns tab
+	- Save is currently not implemented
+	- Column
+		- Basic tab
+		- Settings tab - similar as for Menus & Commands. Configuration in org.mxeclipse.model.SettingsTable.txt
+		- Save is currently not implemented
+
+***** v0.9.1 (2008-01-23)
+MxObject:
+- History not retrieved until the History tab is selected
+- History limit setting (default 200, if 0 - unlimited)
+- Revions button/action - shows all revisions of selected object underneath selected object in the tree
+- Boolean attributes have a drop-down now
+Fix: In the search history pull down menu, entries are in reverse order (most recent first)
+Fix: Server name label was showing only the name specified in the preferences. Now it shows correct user/server name
+	 even when it is changed manually in the login dialog
+
+MxBusiness:
+* Index
+	- Basic index form containing also
+		1. Enable button
+		2. Validate index button
+	- Attributes form - add/remove/update of assigned basics/attributes to this index
+
+***** v0.9 (2007-11-25)
+MxObject:
+Fix: if two objects were having the same name, but different types, and they are connected, relationship direction
+		was not detected correctly
+- Combobox for ranged attributes
+- Datetime popup dialog for date attributes
+- Editability for basic information, including:
+	- combo boxes for types, policies and states
+	- content of these boxes is dynamic (all possible policies for specific type, all states for selected policy)
+- Server/username is visible at all times in the status bar
+- Promote, demote & revise buttons in the toolbar/popup menu
+	- will ask for confirmation first
+	- multiple selection available - multiple promotions/demotions at a time
+- Search dialog - major changes:
+	- Replace/append radio buttons
+	- Description, Policy, State searchable fields
+	- Standard search includes dynamic attribute search capabilities
+	- Find like search option - will show all attributes of selected type
+	- Will remember previous search criterias - a drop down menu just behind the search button
+
+MxBusiness:
+Fix: Types were not showing hidden attributes (in the expanded tree, but also in the attributes table)
+Fix: Toolbar icon images were not visible if a user didn't have Matrix installed locally
+Fix: Attribute expand - show also all relationships containing the attribute
+Fix: Triggers were not updating properly (add/remove was working, but update didn't)
+* Person
+	- Access & Admin rights tab
+
+* Role, Group
+	- Parents tab
+	- Children tab
+	- Persons tab
+
+* Association
+	- Basic tab
+
+* Policy
+	- Expand will show states and types governed by the policy
+	- States tab - editable name/add/insert/remove + link that will expand the policy showing state details
+
+* Policy states (available through expand on policy or link in the policy->states tab)
+	- Basic tab
+	- User access rights tab
+	- Triggers tab
+
+
+Global:
+- Clear Cache Button - available in the preferences dialog
+- Triggers-on/off & search limit moved to MxObject sub dialog in the preferences
+
+***** v0.8.4 (2007-09-26)
+MxBusiness:
+Fix: Direction images revisited, to have a more logical look (to/from switched for contains/from/to)
+Fix: Create New Attribute type prompts for data type (previously only string typed attribute were)
+- Sort in MxBusiness treetable
+* Attribute
+	- Inheritance shading on types related to expanded attribute
+* Person
+	- Password, including password options is editable via the basic person tab
+	- Expanding a person will show assigned roles & groups
+
+* Role, Group
+	- Expanding an assignment will show parent & child roles/groups
+
+MxObject:
+Fix: Images for Connect Existing/New->direction button (instead of text)
+Fix: Disconnect on multiple objects was picking wrong objects
+Fix: Exception was thrown when there was a pipe inside an attribute value
+Fix: Persisted column layout (list of columns) was not taken correctly on the next start
+- Policy name is visible in the basic object tab
+- Optimization of MxTreeDomainObject code - when going to a remote server, much better performance, especially
+	when only default tree table columns are diplayed
+
+JPO Handling:
+Fix: Blank in the import jpos to a project was causing problems
+
+Global:
+Fix: Changing hostname/username/password was not disconnecting the old connection automatically
+
+***** v0.8.3.1 (2007-08-17)
+Fix: Eclipse 3.3 related fix
+Fix: Update JPO was not working for a remote server due to a dot inserted in the beginning of the filename
+
+
+***** v0.8.3 (2007-08-16)
+MxBusiness:
+- Added Create New Admin Object button & dialog
+- Added Delete Admin Object button
+* Person
+	- Role and Group tabs for their defintion for a particular user
+	- Basic tab: User types added (application/full/business/system/inactive/trusted)
+
+* Program
+	- Basic tab
+	- Code tab including "java style" checkbox
+
+JPO Handling
+	- Fix: when connection is to a remote server, completely new procedures for import/update of jpos
+	- Added a separate tab in the preferences dealing with jpo handling
+		1. Update program on a remote server warning
+		2. Configurable import jpos into project - folders (program, java, others)
+		3. Default JPO editor style (in jpo code tab): java like/macros like
+
+***** v0.8.2 (2007-06-29)
+MxBusiness:
+* Search dialog
+	- Fix: "All" is working now (and is default)
+	- multi select of admin types
+	- Fix: Append/Replace buttons functional
+	- Next search will show criteria from the last search (types/name pattern/append flag)
+
+MxObject:
+* Search
+	- Limit on the search result number of objects - new preference + display in MxObject view (statusbar)
+
+Global Functionality
+	- Trigger off option: Trigger off preference added + display in MxObject view (statusbar) - possible to change it by a click on the label
+
+JPO Handling
+	- Store JPOs to Matrix will complain if there were some compile errors
+
+
+***** v0.8.1 (2007-05-14)
+MxBusiness
+* Attribute
+	- expand will show also relationships containing the attribute
+* Person
+    - Basic tab
+    - Additional tab (containing also Site and Vault info)
+
+Global
+* Matrix 10.7.1 library created - can be used instead of 10.6.2 (old one can be used also - just remove the new 10.7.1 jar from plugins folder, and old version will be used automatically).
+
+***** v0.8 (2007-04-18)
+
+MxBusiness
+* Attributes
+  - Trigger tab - add/remove/replace functionality
+
+* Types
+  - Expand will show relationships
+
+* Relationships
+  - Basic Info
+  - Attributes Table - add/remove/replace functionality
+  - Allowed Types - tab for from/to side definition (types and flags)
+  - Trigger tab - add/remove/replace functionality
+  - Expand in the tree will show from/to types
+
+* Policies
+  - Basic Info
+
+FIX: Inherited attributes - gray in the right hand side list
+
+Global:
+- FIX: Arrows fixed to use images
+
+***** v0.7.4 (2007-03-19)
+
+Global changes:
+- MxEclipse perspective added
+
+MxBusiness
+* Attributes:
+  - Attribute expand shows types containing the attribute
+* Types:
+  - Triggers tab developed, link to the trigger objects (gray trigger icon is displayed for inherited triggers). The arrow button will show the trigger object in object view.
+  - Children types, as well as a parent type shown on expand
+  - Relationship column - shows relationship direction and its nature (contains, policy, inherits)
+  - all inherited attributes, policies - shown in gray
+  - Attributes, policies in the combo sorted alphabetically, ignore case
+  - FIX: Abstract flag correctly shown and handled
+  - Parent type display/edit functionality in basic type tab
+
+MxObject
+  - Create New Object dialog - automatic policy/initial revision chooser
+  - Connect New Object dialog - automatic relationship (based on selected object & direction), and new object type (based on relationship/direction)
+    Sample: 1. Person selected in the main view – available relationships (where Person is on from side)
+            2. If Assigned Buyer selected – list of types for the new object to be connected is  limited to only “Buyer Desk”
+            3. When selected – list of policies is limited to the ones governing that type, and the first in the list is selected. Revision is set to initial revision for that policy automatically
+            4. The object is created and connected – ready to edit object and rel attributes
+
+***** v0.7.3 (2007-03-12)
+
+- Types:
+	Basic Info
+	Attributes Table - add/remove/replace functionality
+	Policy Table - add/remove/replace functionality
+
+- Expand on type (or double-click) - shows attrs & policies for now
+- range sorting alphabetically
+- FIX: Attribute rename bug corrected
+
+
+***** v0.7.2 (2007-03-02)
+-	MxBusinessView redesign started
+	o	Attributes
+			Basic info
+ 			Range table
+
+-	Interface added to MxBusiness search
+-	Description on HTTP way to connect added to preferences dialog
+-	Fixed java.util.MissingResourceException for emxSystem.properties
+-	FIX: FilterDialog remembers relationship types correctly
+-	FIX: Multple disconnect working properly (previously still was individual disconnect – first only)
+-	Renamed all packages from com.scandent…
+
+***** v0.7.1 (2007-02-21)
+-	Split matrix related libraries from MxElipse, and set as additional plugin (mxeclipselib)
+-	MxEclipse feature create
+-	Update site created (http://testserver01.ch.abb.com/mxeclipse)
+
+***** 2006-08-12
+
+There are some new features of the plugin I would like to share with you:
+- Description and State columns added
+- Delete action ( ) - will delete the current object (confirm dialog first)
+- Connect Existing action ( ) - will open a dialog where a user can search
+
+
+  Content of this dialog is sensitive on the preselected items - for instance relationship dialog will contain only those logical relationships for the object selected before the popup is invoked, and for the direction of relationship - left upper corner. After search, and selection of an object, click on OK button will connect it to the object in the MxObject view.
+
+- Table Columns chooser ( ) - will open a dialog that enables a user to choose columns and layout to be shown:
+
+        Columns can be set to invisible, and also can be defined for object or relationship. Also, width can be predefined. On clicking OK, MxObjet view's treetable will be updated, but also the settings will be stored as a preference, so after the eclipse restart the settings will stay, and can be edited in the same dialog. Here is the look of table after applying the changes:
+
+
+
+***** 2006-11-03
+
+There is a new version of mxeclipse containing following new features:
+- Disconnect button available    - will disconnect selected object's relationship to parent object in the treee view. User will be prompted first:
+
+- Tree table instead of tree - columns are movable and sortable:
+
+
+***** 2006-10-23
+
+- Filter functionality ( )   - you can filter by object/relationship name/attributes as well as rel directions - this filter will be taken into account on expand of relationships.
+
+(planned is to have possibility to store/retreive filters, not done yet)
+
+- Changes on object/relationship attributes are tracked in the gui (  - for modified, but still not saved). Also notice (*) sign in the header of the view.
+
+ - Save attributes on objects & relationships from the gui ( ). All the pending attributes are save to the database.
+- Shortcuts when you are on the view:
+	- Ctrl+F = find objects dialog
+	- Ctrl+S = save object & relationship attributes
+
+
+***** 2006-10-06
+
+- expand in the list of objects - just double click on an obect, or use popup menu expand action - it can be nested...
+
+- Relationship tab will show information on the relationship coming to the selected object (relationship direction is also shown in the tree on the left side, as well as it's name).
+- Silent login - in the preferences dialog, there is additional flag (Automatically log in without dialogs). This one will just log you in without need to press login button, any time logged in user is needed. You will not be logged out automatically.
+
+
+You can get it from the same folder: /pcpdev/mxeclipse/install/plugins/com.scandent.mxeclipse_10.6.2.0.jar
+
+***** 2006-09-25
+
+There is a new version containing split view for business, objects, and mql.
+Also, properties for objects contain attributes (readonly for now) and history working tabs. MQL view contains fully functional MQL client. History arrow up/down buttons also work.
+
+***** 2006-09-22
+
+Please notice that there is another project in our pcpdev repository: mxeclipse. The intention is to have matrix plugin for eclipse. I got the initial source code from Tom, and added some more functionality. It is far from finished but you can use it in current state.
+Just save the jar file shown in the picture to your plugins folder (you can put it in eclipse or in thirdparty/AdditionalExtensions/eclipse/plugins).
+
+
+There are four buttons on top you can use (connect to matrix, disconnect, import programs to your project, save programs - useful one, you can just save a JPO that you are editing to matrix).
+There is also another MxEclipse view (you should take it from Window->Open View for the first time). It allows search by admin/business objects. Admin doesn't work for all, and no properties are shown.
+Business object search is the part I did (the form doesn't look very nice but does the job - you can search by id - if no ids given you can type: type-name-revison combination. A click on the result's row will give you (currently only basic) information about the object.
+

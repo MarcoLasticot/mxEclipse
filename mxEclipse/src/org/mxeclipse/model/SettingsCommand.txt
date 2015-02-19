@@ -1,0 +1,65 @@
+Access Expression
+
+
+Access Function
+
+
+Access Mask
+
+
+Access Program
+
+
+Action Label
+
+
+Action Type
+	Separator
+	Separator
+Confirm Message
+
+
+Image
+
+
+Label
+
+
+Maximum Length
+
+
+Input Type
+	textbox
+	textbox
+PreExpand
+	true | false
+	false
+Registered Suite
+
+
+Popup Modal
+	true | false
+	true
+Row Select
+	single | multi | none
+	none
+Submit
+	true | false
+	false
+Structure Function
+
+
+Structure Inquiry
+
+
+Structure Program
+
+
+Target Location
+	content | popup | _top | listHidden | hiddenFrame | mainFrame | fromViewHidden
+
+Window Height
+
+
+Window Width
+

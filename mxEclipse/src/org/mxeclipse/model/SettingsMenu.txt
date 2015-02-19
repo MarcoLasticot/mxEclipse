@@ -1,0 +1,71 @@
+Access Expression
+
+
+Access Function
+
+
+Access Mask
+
+
+Access Program
+
+
+Currency Converter
+	True | False
+	False
+Default Category
+
+
+Help Marker
+
+
+Image
+
+
+Label Function
+
+
+Label Program
+
+
+Maximum Length
+
+
+Message URL Label
+
+
+Printer Friendly
+	True | False
+	True
+Pull Right
+	True | False
+	True
+Registered Suite
+
+
+Row Select
+	single | multi | none
+	none
+Selectable in Preferences
+
+
+Structure Menu
+
+
+Submit
+	true | false
+	false
+Tip Page
+
+
+Target Location
+	content | popup | _top | listHidden | hiddenFrame | mainFrame | fromViewHidden
+
+Tree Scope ID
+
+
+Window Height
+
+
+Window Width
+

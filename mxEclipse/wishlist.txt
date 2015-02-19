@@ -1,0 +1,48 @@
+Global:
+= disable triggers upfront/or as an option
+
+
+MxBusiness:
+= sort on columns
+= trigger object - to have capability to jump to the code
+= jpo handling - settings for working folders, redo export of jpos to those folders, check for errors when push back to matrix
+= create new attribute/type,...
+= clear cache now button - would clear all static lists (all attributes, all types...) -> 0.9
+= ranges: extend range functionality for condition specification
+= policy states to be visible in the policy table -> 0.9
+= additional column for attributes in the tree viewer - attribute type <- Johnny
+- when renaming a range - script to migrate all the data to new range value
+- if a policy is replaced by another on in a type policy tab, make a state migration dialog/procedure/optional server script
+- when replacing an attribute on a type/relationship - make a data migration dialog/procedure/optional server script
+= enable view/edit for persons/groups/roles -> 0.9
+= enable view/edit for web related parts (tables, menus, commands, web forms) -> 1.0
+- enable view/edit for other admin object 1.x
+= create new for all admin objects
+= double click to open connected admin objects - filter by admin object type
+= navigation from business to object view -> find all objects of a specific type (number limited)=
+= triggers tab for all applicable admin objects -> to be able to jump to the trigger definition
+- Make replace/append object in search dialog functional
+= dual classes - visible functionality the same (v2.0)
+	1. on top of matrix,
+	2. on top of spinner files
+= object model diagram creation
+
+
+MxObject:
+= background search
+= dropdown for ranged attributes
+= add search by rel id - then show from and to objects in the structure
+= display/save current filter
+= extend search functionality - remember criteria, attribute based search
+= promote/demote buttons
+
+MxMQL:
+= Favorites - inner (common statements) + custom
+= dropdown list for history
+= multiline mode
+= run from file
+= serving like mql console - business and object views to write the statements being executed
+- tcl execution mode
+
+Fixes:
+- string internationalizatio - ongoing - x.x.x

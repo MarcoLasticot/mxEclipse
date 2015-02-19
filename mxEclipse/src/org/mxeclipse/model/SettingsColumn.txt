@@ -1,0 +1,146 @@
+Access Expression
+
+
+Access Function
+
+
+Access Mask
+
+
+Access Program
+
+
+Admin Type
+
+
+Allow Manual Edit
+	false | true
+	false
+Alternate OID expression
+
+
+Alternate Policy expression
+
+
+Alternate Type expression
+
+
+Auto Filter
+	true | false
+	false
+Column Icon
+
+
+Column Type
+	program | programHTMLOutput | icon | image | checkbox | separator | file
+
+Currency Converter
+	true | false
+	false
+Currency Expression
+
+
+Display Format
+
+
+Display Time
+	true | false
+	false
+Dynamic URL
+	enable | disable
+	enable
+Edit Access Mask
+
+
+Editable
+	true | false
+	false
+Effective Date Expression
+
+
+Export
+	true | false
+	true
+Field Type
+	basic | attribute | alphanumeric | date | currency | UOM | email | numeric
+
+function
+
+
+Group Header
+
+
+Help Marker
+
+
+Image Size
+	format_mxSmallImage | format_mxMediumImage | format_mxThumbnailImage
+
+Input Type
+	textbox | textarea | combobox
+	textbox
+Nowrap
+	true | false
+
+Popup Modal
+	true | false
+	false
+Printer Friendly
+	true | false
+	true
+program
+
+
+Range Function
+
+
+Range Program
+
+
+Registered Suite
+
+
+Relationship Filter
+
+
+Show Alternate Icon
+	true | false
+
+Show Type Icon
+	true | false
+	false
+Sortable
+	true | false
+	true
+Sort Direction
+	ascending | descending | none
+	ascending
+Sort Program
+
+
+Sort Range Values
+	enable | disable
+	enable
+Sort Type
+	date | integer | real
+
+Target Location
+	content | popup | _top | listHidden | hiddenFrame | mainFrame | fromViewHidden
+
+Tip Page
+
+
+UOM Expression
+
+
+Update Function
+
+
+Update Program
+
+
+Validate
+
+
+Validate Type
+
