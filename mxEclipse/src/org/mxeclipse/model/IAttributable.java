@@ -1,5 +1,4 @@
 package org.mxeclipse.model;
 
-public abstract interface IAttributable
-{
+public abstract interface IAttributable {
 }

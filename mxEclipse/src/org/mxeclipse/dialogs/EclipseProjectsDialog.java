@@ -28,26 +28,22 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.mxeclipse.utils.MxEclipseUtils;
 
-public class EclipseProjectsDialog extends Dialog
-{
+public class EclipseProjectsDialog extends Dialog {
 	protected Label messageLabel;
 	protected Label imageLabel;
 	protected Table table;
 	private String projectPath;
 	private String projectName;
 
-	public EclipseProjectsDialog(Shell parentShell)
-	{
+	public EclipseProjectsDialog(Shell parentShell) {
 		super(parentShell);
 	}
 
-	public EclipseProjectsDialog(IShellProvider parentShell)
-	{
+	public EclipseProjectsDialog(IShellProvider parentShell) {
 		super(parentShell);
 	}
 
-	protected Control createDialogArea(Composite parent)
-	{
+	protected Control createDialogArea(Composite parent) {
 		Composite comp = (Composite)super.createDialogArea(parent);
 		GridLayout layout = (GridLayout)comp.getLayout();
 		layout.marginLeft = 2;
@@ -58,42 +54,30 @@ public class EclipseProjectsDialog extends Dialog
 
 		Image image = getSWTImage(2);
 		if (image != null) {
-			this.imageLabel = 
-					new Label(comp, 
-							0);
+			this.imageLabel = new Label(comp, 0);
 			image.setBackground(this.imageLabel.getBackground());
 			this.imageLabel.setImage(image);
 			this.imageLabel.setLayoutData(new GridData(66));
 		}
 
-		this.messageLabel = 
-				new Label(comp, 
-						16448);
+		this.messageLabel = new Label(comp, 16448);
 		this.messageLabel.setText(MxEclipseUtils.getString("EclipseProjectsDialog.MainLabel.Message"));
 		GridData labData = new GridData(770);
 
 		labData.widthHint = convertHorizontalDLUsToPixels(300);
 		this.messageLabel.setLayoutData(labData);
 
-		this.table = 
-				new Table(comp, 
-						68132);
+		this.table = new Table(comp, 68132);
 		this.table.setToolTipText(MxEclipseUtils.getString("EclipseProjectsDialog.Table.ToolTip.Message"));
-		GridData gd = new GridData(4, 
-				4, 
-				true, 
-				true);
+		GridData gd = new GridData(4, 4, true, true);
 		gd.horizontalSpan = 2;
 		this.table.setLayoutData(gd);
 		this.table.setHeaderVisible(true);
-		TableColumn name = new TableColumn(this.table, 
-				16384);
+		TableColumn name = new TableColumn(this.table, 16384);
 		name.setText(MxEclipseUtils.getString("EclipseProjectsDialog.table.column.ProjectName"));
-		TableColumn path = new TableColumn(this.table, 
-				16384);
+		TableColumn path = new TableColumn(this.table, 16384);
 		path.setText(MxEclipseUtils.getString("EclipseProjectsDialog.table.column.Path"));
-		TableColumn location = new TableColumn(this.table, 
-				16384);
+		TableColumn location = new TableColumn(this.table, 16384);
 		location.setText(MxEclipseUtils.getString("EclipseProjectsDialog.table.column.Location"));
 
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -108,8 +92,7 @@ public class EclipseProjectsDialog extends Dialog
 				IPath projLoc = proj.getResource().getLocation();
 				IPath projPath = proj.getPath();
 				proj.open(null);
-				item = new TableItem(this.table, 
-						0);
+				item = new TableItem(this.table, 0);
 				item.setText(0, proj.getElementName());
 				item.setText(1, projPath.toString());
 				item.setText(2, projLoc.toString());
@@ -130,8 +113,7 @@ public class EclipseProjectsDialog extends Dialog
 			tableColumn.pack();
 		}
 
-		this.table.addSelectionListener(new SelectionAdapter()
-		{
+		this.table.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
 				TableItem item = (TableItem)event.item;
 				TableItem[] totalItems = EclipseProjectsDialog.this.table.getItems();
@@ -145,20 +127,18 @@ public class EclipseProjectsDialog extends Dialog
 		return comp;
 	}
 
-	protected void okPressed()
-	{
+	protected void okPressed() {
 		TableItem[] totalItems = this.table.getItems();
 		TableItem[] chkdItems = new TableItem[totalItems.length];
 		boolean[] chkItems = new boolean[totalItems.length];
 		int chkItemCount = 0;
 		boolean moreChkd = false;
-		for(int x = 0; x < totalItems.length; x++)
-		{
+		for(int x = 0; x < totalItems.length; x++) {
 			chkItems[x] = totalItems[x].getChecked();
-			if(!chkItems[x])
+			if (!chkItems[x]) {
 				continue;
-			if(chkItemCount > 0)
-			{
+			}
+			if (chkItemCount > 0) {
 				moreChkd = true;
 				break;
 			}
@@ -187,32 +167,30 @@ public class EclipseProjectsDialog extends Dialog
 		}
 	}
 
-	protected void cancelPressed()
-	{
+	protected void cancelPressed() {
 		super.cancelPressed();
 	}
 
-	protected void configureShell(Shell newShell)
-	{
+	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText(MxEclipseUtils.getString("EclipseProjectsDialog.header.ListProjects"));
 	}
 
-	protected void createButtonsForButtonBar(Composite parent)
-	{
+	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, 0, MxEclipseUtils.getString("button.Select"), true);
 		createButton(parent, 1, IDialogConstants.CANCEL_LABEL, false);
 	}
 
-	private Image getSWTImage(final int imageID)
-	{
+	private Image getSWTImage(final int imageID) {
 		Shell shell = getShell();
 
-		if (shell == null)
+		if (shell == null) {
 			shell = getParentShell();
+		}
 		final Display display;
-		if (shell == null)
+		if (shell == null) {
 			display = Display.getCurrent();
+		}
 		else {
 			display = shell.getDisplay();
 		}

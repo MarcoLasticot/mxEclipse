@@ -15,8 +15,7 @@ import org.eclipse.swt.widgets.Text;
 import org.mxeclipse.model.MxAttribute;
 import org.mxeclipse.model.MxTreeAttribute;
 
-public class AttributeRow
-{
+public class AttributeRow {
 	private Combo cmbAttributes = null;
 	private Text txtAttributeValue = null;
 	private Button cmdAddNew = null;
@@ -24,8 +23,7 @@ public class AttributeRow
 	private Composite parent;
 	private ArrayList<AttributeRow> lst;
 
-	public AttributeRow(Composite parent, ArrayList<AttributeRow> lst)
-	{
+	public AttributeRow(Composite parent, ArrayList<AttributeRow> lst) {
 		this.parent = parent;
 		this.lst = lst;
 		GridData gridData2 = new GridData();
@@ -38,15 +36,13 @@ public class AttributeRow
 		this.cmbAttributes = new Combo(parent, 0);
 		this.cmbAttributes.setVisibleItemCount(8);
 		this.cmbAttributes.setLayoutData(gridData2);
-		try
-		{
+		try {
 			ArrayList allAttributes = MxTreeAttribute.getAllAttributes(false);
 			MxTreeAttribute attr;
 			for(Iterator iterator = allAttributes.iterator(); iterator.hasNext(); cmbAttributes.add(attr.getName())) {
 				attr = (MxTreeAttribute)iterator.next();
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			Status status = new Status(4, "MxEclipse", 0, ex.getMessage(), ex);
 			ErrorDialog.openError(parent.getShell(), 
 					"Error when trying to initialize attribute related form part", 
@@ -118,8 +114,7 @@ public class AttributeRow
 		return null;
 	}
 
-	public void setCondition(MxAttribute attribute)
-	{
+	public void setCondition(MxAttribute attribute) {
 		if (attribute != null) {
 			this.cmbAttributes.setText(attribute.getName());
 			this.txtAttributeValue.setText(attribute.getValue());

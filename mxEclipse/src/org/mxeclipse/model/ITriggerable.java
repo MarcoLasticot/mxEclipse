@@ -1,5 +1,4 @@
 package org.mxeclipse.model;
 
-public abstract interface ITriggerable
-{
+public abstract interface ITriggerable {
 }
