@@ -4,15 +4,14 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.logging.Logger;
+
 import matrix.db.Context;
 import matrix.db.Group;
 import matrix.db.MQLCommand;
 import matrix.db.Role;
 import matrix.db.User;
 import matrix.util.MatrixException;
-import org.mxeclipse.business.table.assignment.MxAssignmentComposite.MxAssignmentContentProvider;
+
 import org.mxeclipse.exception.MxEclipseException;
 import org.mxeclipse.utils.MxEclipseLogger;
 
@@ -355,8 +354,7 @@ public abstract class MxTreeAssignment extends MxTreeUser {
 		}return null;
 	}
 
-	public ArrayList<MxTreePerson> getPersons(boolean forceRefresh)
-	{
+	public ArrayList<MxTreePerson> getPersons(boolean forceRefresh) {
 		if ((forceRefresh) || (this.persons == null)) {
 			this.persons = getPersons(this);
 		}
@@ -367,8 +365,7 @@ public abstract class MxTreeAssignment extends MxTreeUser {
 		ArrayList assignments = parentAssignment ? getParentAssignments(false) : getChildrenAssignments(false);
 		String sAdded = "";
 
-		for(Iterator iterator = assignments.iterator(); iterator.hasNext();)
-		{
+		for(Iterator iterator = assignments.iterator(); iterator.hasNext();) {
 			MxTreeAssignment assignment = (MxTreeAssignment)iterator.next();
 			if(!sAdded.equals("")) {
 				sAdded = (new StringBuilder(String.valueOf(sAdded))).append(",").toString();
@@ -383,57 +380,42 @@ public abstract class MxTreeAssignment extends MxTreeUser {
 		ArrayList persons = getPersons(false);
 		String realTypeName = getType().toLowerCase();
 
-		for(Iterator iterator = persons.iterator(); iterator.hasNext();)
-		{
+		for (Iterator iterator = persons.iterator(); iterator.hasNext();) {
 			MxTreePerson person = (MxTreePerson)iterator.next();
-			if(person.getOldName().equals(""))
-				command.executeCommand(context, MessageFormat.format(MQL_ADD_PERSON, new Object[] {
-						realTypeName, getName(), person.getName()
-				}));
+			if(person.getOldName().equals("")) {
+				command.executeCommand(context, MessageFormat.format(MQL_ADD_PERSON, new Object[] {realTypeName, getName(), person.getName()}));
+			}
 		}
 
 		if (oldPersons != null)
-			for(Iterator iterator1 = oldPersons.iterator(); iterator1.hasNext();)
-			{
+			for(Iterator iterator1 = oldPersons.iterator(); iterator1.hasNext();) {
 				MxTreePerson oldPerson = (MxTreePerson)iterator1.next();
 				boolean bFound = false;
-				for(Iterator iterator2 = persons.iterator(); iterator2.hasNext();)
-				{
+				for(Iterator iterator2 = persons.iterator(); iterator2.hasNext();) {
 					MxTreePerson person = (MxTreePerson)iterator2.next();
-					if(oldPerson.getName().equals(person.getName()))
-					{
+					if(oldPerson.getName().equals(person.getName())) {
 						bFound = true;
 						break;
 					}
-					if(oldPerson.getName().equals(person.getOldName()))
-					{
-						command.executeCommand(context, MessageFormat.format(MQL_ADD_PERSON, new Object[] {
-								realTypeName, getName(), person.getName()
-						}));
-						command.executeCommand(context, MessageFormat.format(MQL_REMOVE_PERSON, new Object[] {
-								realTypeName, getName(), oldPerson.getOldName()
-						}));
+					if(oldPerson.getName().equals(person.getOldName())) {
+						command.executeCommand(context, MessageFormat.format(MQL_ADD_PERSON, new Object[] {realTypeName, getName(), person.getName()}));
+						command.executeCommand(context, MessageFormat.format(MQL_REMOVE_PERSON, new Object[] {realTypeName, getName(), oldPerson.getOldName()}));
 						bFound = true;
 						break;
 					}
 				}
 
 				if(!bFound)
-					command.executeCommand(context, MessageFormat.format(MQL_REMOVE_PERSON, new Object[] {
-							realTypeName, getName(), oldPerson.getOldName()
-					}));
+					command.executeCommand(context, MessageFormat.format(MQL_REMOVE_PERSON, new Object[] {realTypeName, getName(), oldPerson.getOldName()}));
 			}
 	}
 
-	public void save()
-	{
-		try
-		{
+	public void save() {
+		try {
 			MQLCommand command = new MQLCommand();
 			Context context = getContext();
 			this.assignment.open(context);
-			try
-			{
+			try {
 				String modString = "";
 				String assignmentName = this.assignment.getName();
 				boolean changedName = !assignmentName.equals(getName());
@@ -464,9 +446,9 @@ public abstract class MxTreeAssignment extends MxTreeUser {
 				}
 
 				String sChildAssignments = prepareSaveAssignments(context, command, false);
-				if (!sChildAssignments.equals(""))
+				if (!sChildAssignments.equals("")) {
 					modString = modString + " child " + sChildAssignments;
-				else {
+				} else {
 					modString = modString + " remove child all";
 				}
 
@@ -477,9 +459,9 @@ public abstract class MxTreeAssignment extends MxTreeUser {
 				}
 
 				if (changedName) {
-					if (this.type.equals("Role"))
+					if (this.type.equals("Role")) {
 						this.assignment = new Role(this.name);
-					else {
+					} else {
 						this.assignment = new Group(this.name);
 					}
 				}
@@ -499,9 +481,7 @@ public abstract class MxTreeAssignment extends MxTreeUser {
 		}
 	}
 
-	public MxTreeBusiness[] getChildren(boolean forceUpdate)
-			throws MxEclipseException, MatrixException
-	{
+	public MxTreeBusiness[] getChildren(boolean forceUpdate) throws MxEclipseException, MatrixException {
 		if (forceUpdate) {
 			this.children = null;
 		}
